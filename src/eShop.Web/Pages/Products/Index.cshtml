@@ -1,0 +1,20 @@
+﻿@page
+@using eShop.Web.Pages.Products
+@using Microsoft.Extensions.Localization
+@using eShop.Localization
+@model eShop.Web.Pages.Products.IndexModel
+@inject IStringLocalizer<eShopResource> L
+
+@section scripts
+    {
+    <abp-script src="/Pages/Products/Index.cshtml.js" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <h2>@L["Menu:Products"]</h2>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table id="Products" striped-rows="true" />
+    </abp-card-body>
+</abp-card>

@@ -1,0 +1,177 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using eShop.Localization
+@model eShop.Web.Pages.Categories.IndexModel
+@inject IStringLocalizer<eShopResource> L
+@{
+    ViewData["Title"] = "Categories";
+    int counter = 1;
+}
+@*@section scripts {
+    <abp-script src="/Pages/Categories/Index.cshtml.js" />
+}*@
+
+
+<!-- Categories -->
+<div class="d-flex align-items-center mb-3">
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="~/">Home</a></li>
+            <li class="breadcrumb-item active">Categories</li>
+        </ol>
+        <h1 class="page-header mb-0">Categories</h1>
+    </div>
+    <div class="ms-auto">
+        <a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</a>
+    </div>
+</div>
+<div class="mt-5 container col-xl-12">
+    <!-- BEGIN panel -->
+    <div class="panel panel-inverse" data-sortable-id="table-basic-7">
+        <div class="panel-heading">
+            <h4 class="panel-title">Categories <span class="badge bg-success ms-5px">PRO</span></h4>
+        </div>
+        <!-- BEGIN panel-body -->
+        <div class="panel-body">
+            <!-- BEGIN table-responsive -->
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Id</th>
+                            <th style="width: 50%">Category</th>
+                            <th style="width: 11%"><a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> &nbsp; Add New</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*@foreach (var item in Model.Categories)
+                        {
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td nowrap>
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-controller="ProductCategory" asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                        <!--<form asp-controller="ProductCategory" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="bi bi-trash"></i></button></form>-->
+                                        <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            counter++;
+                        }*@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="deleteForm" asp-action="Delete"><input type="hidden" id="leaveTypeId" name="Id" /></form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Category List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Category
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Category Name
+                </th>
+                <th>
+                    Display Order
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var obj in Model.Categories)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Name
+                    </td>
+                    <td width="30%">
+                        obj.DisplayOrder
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"
+                           class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
+                           class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }*@
+        </tbody>
+
+    </table>
+</div>
+
+
+<div class="container">
+    <abp-card>
+        <abp-card-header>
+            <abp-card-title>Categories</abp-card-title>
+        </abp-card-header>
+        <abp-card-body>
+
+            <!-- FORM FOR NEW TODO ITEMS -->
+            @*<form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
+            <div class="col-12">
+            <div class="input-group">
+            <input id="NewItemText" type="text" class="form-control" placeholder="unesi...">
+            </div>
+            </div>
+            <div class="col-12">
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+            </div>
+            </form>*@
+
+            <!-- TODO ITEMS LIST -->
+            <ul id="Categories">
+                @*@foreach (var category in Model)
+                {
+                    <li data-id="@category.Id"><i class="fa fa-trash-o"></i> @category.Name</li>
+                }*@
+            </ul>
+        </abp-card-body>
+    </abp-card>
+</div>
