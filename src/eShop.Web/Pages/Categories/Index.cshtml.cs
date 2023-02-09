@@ -26,6 +26,6 @@ public class IndexModel : PageModel
 
 //    public async Task OnGetAsync()
 //    {
-//        Categories = await _categoryAppService.GetCategoriesAsync();        
+//        Categories = await _categoryAppService.GetListAsync();
 //    }
 //}

@@ -12,31 +12,25 @@ public class eShopDataSeedContributor : IDataSeedContributor, ITransientDependen
 {
     private readonly IRepository<Category, Guid> _categoryRepository;
     private readonly IRepository<Product, Guid> _productRepository;
+    private readonly CategoryManager _categoryManager;
 
-    public eShopDataSeedContributor(IRepository<Category, Guid> categoryRepository, IRepository<Product, Guid> productRepository)
+    public eShopDataSeedContributor(IRepository<Category, Guid> categoryRepository, IRepository<Product, Guid> productRepository, CategoryManager categoryManager)
     {
         _categoryRepository = categoryRepository;
         _productRepository = productRepository;
+        _categoryManager = categoryManager;
     }
     public async Task SeedAsync(DataSeedContext context)
     {
         /***** TODO: Seed initial data here *****/
 
-        // Add Category
-        if (await _categoryRepository.CountAsync() > 0)
+
+
+        if (await _categoryRepository.GetCountAsync() <= 0)
         {
-            return;
-        }
 
-        var books = new Category { Name = "Books" };
-        var movies = new Category { Name = "Movies" };
-
-        await _categoryRepository.InsertManyAsync(new[] { books, movies });
-
-
-        // Add Product
-        if (await _productRepository.GetCountAsync() <= 0)
-        {
+            var books = await _categoryRepository.InsertAsync(await _categoryManager.CreateAsync("Books"));
+            var movies = await _categoryRepository.InsertAsync(await _categoryManager.CreateAsync("Movies"));
 
             await _productRepository.InsertAsync(new Product
             {
@@ -47,7 +41,7 @@ public class eShopDataSeedContributor : IDataSeedContributor, ITransientDependen
                 ReleaseDate = new DateTime(1997, 01, 01),
                 StockState = ProductStockState.InStock
             },
-            autoSave: true);
+                autoSave: true);
 
             await _productRepository.InsertAsync(new Product
             {
@@ -73,6 +67,59 @@ public class eShopDataSeedContributor : IDataSeedContributor, ITransientDependen
                 autoSave: true);
         }
 
+
+
+        // Add Category
+        //if (await _categoryRepository.CountAsync() > 0)
+        //{
+        //    return;
+        //}
+
+        //var books = new Category { Name = "Books" };
+        //var movies = new Category { Name = "Movies" };
+
+        //await _categoryRepository.InsertManyAsync(new[] { books, movies });
+
+        #region OLD Dont Work When You Put Category Manager
+        // Add Product
+        //if (await _productRepository.GetCountAsync() <= 0)
+        //{
+
+        //    await _productRepository.InsertAsync(new Product
+        //    {
+        //        Category = books,
+        //        Name = "Rudina",
+        //        ImageUrl = "~/images/books/1997 Rudina.jpg",
+        //        Price = 33.99f,
+        //        ReleaseDate = new DateTime(1997, 01, 01),
+        //        StockState = ProductStockState.InStock
+        //    },
+        //    autoSave: true);
+
+        //    await _productRepository.InsertAsync(new Product
+        //    {
+        //        Category = books,
+        //        Name = "Puvarija",
+        //        ImageUrl = "~/images/books/1998 Puvarija.jpg",
+        //        Price = 33.99f,
+        //        IsFreeCargo = true,
+        //        ReleaseDate = new DateTime(1998, 01, 01),
+        //        StockState = ProductStockState.InStock
+        //    },
+        //    autoSave: true);
+
+        //    await _productRepository.InsertAsync(new Product
+        //    {
+        //        Category = movies,
+        //        Name = "Iron Man",
+        //        ImageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/78lPtwv72eTNqFW9COBYI0dWDJa.jpg",
+        //        Price = 19.99f,
+        //        ReleaseDate = new DateTime(2020, 11, 16),
+        //        StockState = ProductStockState.NotAvailable
+        //    },
+        //        autoSave: true);
+        //}
+        #endregion
         #region OLD Way
         //if (await _categoryRepository.CountAsync() > 0)
         //{
