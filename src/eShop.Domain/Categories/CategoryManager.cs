@@ -1,12 +1,11 @@
 ﻿using JetBrains.Annotations;
 using System.Threading.Tasks;
 using Volo.Abp;
-using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Services;
 
 namespace eShop.Categories;
 
-public class CategoryManager : DomainService , ITransientDependency
+public class CategoryManager : DomainService //, ITransientDependency
 {
     private readonly ICategoryRepository _categoryRepository;
 

@@ -17,21 +17,12 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
         _categoryManager = categoryManager;
     }
 
+
     /// <summary>
-    /// OLD Get List
+    /// Get Categories
     /// </summary>
+    /// <param name="input"></param>
     /// <returns></returns>
-    //public async Task<ListResultDto<CategoryDto>> GetListAsync()
-    //public async Task<List<CategoryDto>> GetListAsync()
-    //{
-    //    var categories = await _categoryRepository.GetListAsync();
-    //    return new List<CategoryDto>(ObjectMapper.Map<List<Category>, List<CategoryDto>>(categories));
-    //}
-
-
-
-
-
     public async Task<PagedResultDto<CategoryDto>> GetListAsync(GetCategoryListDto input)
     {
         if (input.Sorting.IsNullOrWhiteSpace())
@@ -44,8 +35,6 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
         return new PagedResultDto<CategoryDto>(totalCount, ObjectMapper.Map<List<Category>, List<CategoryDto>>(categories));
     }
 
-
-
     /// <summary>
     /// Get Category by Id
     /// </summary>
@@ -56,7 +45,6 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
         var category = await _categoryRepository.GetAsync(id);
         return ObjectMapper.Map<Category, CategoryDto>(category);
     }
-
 
     /// <summary>
     /// Create
@@ -103,6 +91,17 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
 
 
     /// <summary>
+    /// OLD Get List
+    /// </summary>
+    /// <returns></returns>
+    //public async Task<ListResultDto<CategoryDto>> GetListAsync()
+    //public async Task<List<CategoryDto>> GetListAsync()
+    //{
+    //    var categories = await _categoryRepository.GetListAsync();
+    //    return new List<CategoryDto>(ObjectMapper.Map<List<Category>, List<CategoryDto>>(categories));
+    //}
+
+    /// <summary>
     /// OLD Create
     /// </summary>
     /// <param name="input"></param>
@@ -111,16 +110,6 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
     //{
     //    await _categoryRepository.InsertAsync(ObjectMapper.Map<CreateUpdateCategoryDto, Category>(input));
     //}
-
-
-
-
-
-
-
-
-
-
 
 
     //public async Task<List<CategoryDto>> GetCategoriesAsync()

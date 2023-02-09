@@ -2,6 +2,7 @@
 using eShop.Products;
 using eShop.Todo;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -32,6 +33,8 @@ public class eShopDbContext : AbpDbContext<eShopDbContext>, IIdentityDbContext, 
     public DbSet<Category> Categories { get; set; }
     // Add Product
     public DbSet<Product> Products { get; set; }
+    // Add ProductImage
+    public DbSet<ProductImage> ProductImages { get; set; }
 
     #region Entities from the modules
 
@@ -81,26 +84,40 @@ public class eShopDbContext : AbpDbContext<eShopDbContext>, IIdentityDbContext, 
 
         /* Configure your own tables/entities inside here */
 
+        // Add for Configurations
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        
         // Add TodoItem
-        builder.Entity<TodoItem>(b => { b.ToTable("TodoItems"); });
+        //builder.Entity<TodoItem>(b => { b.ToTable("TodoItems"); });
 
 
         // Add Category
-        builder.Entity<Category>(b =>
-        {
-            b.ToTable("Categories");
-            b.Property(x => x.Name).HasMaxLength(CategoryConsts.MaxNameLength).IsRequired();
-            b.HasIndex(x => x.Name);
-        });
+        //builder.Entity<Category>(b =>
+        //{
+        //    b.ToTable("Categories");
+        //    b.Property(x => x.Name).HasMaxLength(CategoryConsts.MaxNameLength).IsRequired();
+        //    b.HasIndex(x => x.Name);
+        //});
 
         // Add Product
-        builder.Entity<Product>(b =>
-        {
-            b.ToTable("Products");
-            b.Property(x => x.Name).HasMaxLength(ProductConsts.MaxNameLength).IsRequired();
-            b.HasOne(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Restrict).IsRequired();
-            b.HasIndex(x => x.Name).IsUnique();
-        });
+        //builder.Entity<Product>(b =>
+        //{
+        //    b.ToTable("Products");
+        //    b.Property(x => x.Name).HasMaxLength(ProductConsts.MaxNameLength).IsRequired();
+        //    b.HasOne(x => x.Category).WithMany().HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+        //    b.HasIndex(x => x.Name).IsUnique();
+        //});
+
+        // Add ProductImage
+        //builder.Entity<ProductImage>(b =>
+        //{
+        //    b.ToTable("ProductImages");
+        //    b.Property(x => x.Name).HasMaxLength(ProductImageConsts.MaxNameLength).IsRequired();
+        //    b.HasOne(x => x.Product).WithMany(x => x.ProductImages).HasForeignKey(x => x.ProductId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+        //    b.HasIndex(x => x.Name).IsUnique();
+        //});
+
 
 
         //builder.Entity<YourEntity>(b =>

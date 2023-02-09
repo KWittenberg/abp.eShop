@@ -8,10 +8,6 @@ namespace eShop.Categories;
 public interface ICategoryAppService : IApplicationService
 {
     // Get List
-
-    //Task<List<CategoryDto>> GetListAsync();
-    //Task<ListResultDto<CategoryDto>> GetListAsync();
-
     Task<PagedResultDto<CategoryDto>> GetListAsync(GetCategoryListDto input);
 
     // Get Category by Id
@@ -27,6 +23,3 @@ public interface ICategoryAppService : IApplicationService
     // Delete
     Task DeleteAsync(Guid id);
 }
-
-
-//Task CreateAsync(CreateUpdateCategoryDto input);

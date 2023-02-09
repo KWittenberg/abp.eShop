@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace eShop.Categories;
 
-public class Category : AuditedAggregateRoot<Guid>
+public class Category : FullAuditedAggregateRoot<Guid>
 {
     public string Name { get; set; }
 
@@ -33,7 +33,3 @@ public class Category : AuditedAggregateRoot<Guid>
         Name = Check.NotNullOrWhiteSpace(name, nameof(name), maxLength: CategoryConsts.MaxNameLength);
     }
 }
-
-
-
-
