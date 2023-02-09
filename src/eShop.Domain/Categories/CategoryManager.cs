@@ -14,6 +14,7 @@ public class CategoryManager : DomainService //, ITransientDependency
         _categoryRepository = categoryRepository;
     }
 
+
     /// <summary>
     /// Create
     /// </summary>

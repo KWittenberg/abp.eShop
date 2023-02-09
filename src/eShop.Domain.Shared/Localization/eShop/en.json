@@ -38,23 +38,23 @@
     "Enum:BookType.8": "Science fiction",
     "Enum:BookType.9": "Poems",
     "Enum:BookType.10": "Poetry",
-    "BookDeletionConfirmationMessage": "Are you sure to delete the book '{0}'?",
+    "ProductDeletionConfirmationMessage": "Are you sure to delete the product '{0}'?",
     "SuccessfullyDeleted": "Successfully deleted!",
     "Permission:BookStore": "Book Store",
     "Permission:Books": "Book Management",
     "Permission:Books.Create": "Creating new books",
     "Permission:Books.Edit": "Editing the books",
     "Permission:Books.Delete": "Deleting the books",
-    "BookStore:00001": "There is already an author with the same name: {name}",
+    "eShop:00001": "There is already an category with the same name: {name}",
     "Permission:Authors": "Author Management",
     "Permission:Authors.Create": "Creating new authors",
     "Permission:Authors.Edit": "Editing the authors",
     "Permission:Authors.Delete": "Deleting the authors",
     "Menu:Authors": "Authors",
     "Authors": "Authors",
-    "AuthorDeletionConfirmationMessage": "Are you sure to delete the author '{0}'?",
+    "CategoryDeletionConfirmationMessage": "Are you sure to delete the category '{0}'?",
     "BirthDate": "Birth date",
-    "NewAuthor": "New author",
-    "CategoryName": "Categorys"
+    "NewCategory": "New category",
+    "CategoryName": "Category Name"
   }
 }
