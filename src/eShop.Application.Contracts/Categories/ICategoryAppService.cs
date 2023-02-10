@@ -1,5 +1,4 @@
-﻿using eShop.Products;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -10,7 +9,7 @@ public interface ICategoryAppService : IApplicationService
 {
     // Get List
     Task<PagedResultDto<CategoryDto>> GetListAsync(GetCategoryListDto input);
-    
+
     // Get Category by Id
     Task<CategoryDto> GetAsync(Guid id);
 

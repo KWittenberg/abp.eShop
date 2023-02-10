@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @*@foreach (var item in Model.Categories)
+                        @foreach (var item in Model.Categories)
                         {
                             <tr>
                                 <td>@counter</td>
@@ -60,7 +60,7 @@
                                 </td>
                             </tr>
                             counter++;
-                        }*@
+                        }
                     </tbody>
                 </table>
             </div>
@@ -121,25 +121,23 @@
             </tr>
         </thead>
         <tbody>
-            @*@foreach (var obj in Model.Categories)
+            @foreach (var obj in Model.Categories)
             {
                 <tr>
                     <td width="50%">
-                        @obj.Name
+                        @obj.Id
                     </td>
                     <td width="30%">
-                        obj.DisplayOrder
+                        @obj.Name
                     </td>
                     <td>
                         <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"
-                           class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
-                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
-                           class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
                         </div>
                     </td>
                 </tr>
-            }*@
+            }
         </tbody>
 
     </table>
@@ -154,23 +152,23 @@
         <abp-card-body>
 
             <!-- FORM FOR NEW TODO ITEMS -->
-            @*<form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
-            <div class="col-12">
-            <div class="input-group">
-            <input id="NewItemText" type="text" class="form-control" placeholder="unesi...">
-            </div>
-            </div>
-            <div class="col-12">
-            <button type="submit" class="btn btn-primary">Dodaj</button>
-            </div>
-            </form>*@
+            <form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                        <input id="NewItemText" type="text" class="form-control" placeholder="unesi...">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Dodaj</button>
+                </div>
+            </form>
 
             <!-- TODO ITEMS LIST -->
             <ul id="Categories">
-                @*@foreach (var category in Model)
+                @foreach (var category in Model.Categories)
                 {
                     <li data-id="@category.Id"><i class="fa fa-trash-o"></i> @category.Name</li>
-                }*@
+                }
             </ul>
         </abp-card-body>
     </abp-card>

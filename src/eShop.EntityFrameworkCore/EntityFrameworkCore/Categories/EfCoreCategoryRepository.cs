@@ -1,5 +1,4 @@
 ﻿using eShop.Categories;
-using eShop.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace eShop;
+namespace eShop.EntityFrameworkCore.Categories;
 
 public class EfCoreCategoryRepository : EfCoreRepository<eShopDbContext, Category, Guid>, ICategoryRepository
 {
