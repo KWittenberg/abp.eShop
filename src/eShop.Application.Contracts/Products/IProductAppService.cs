@@ -11,13 +11,15 @@ public interface IProductAppService : IApplicationService
     Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input);
     // Get Categories
     Task<ListResultDto<CategoryLookupDto>> GetCategoriesAsync();
-    
-    // Create
-    Task CreateAsync(CreateUpdateProductDto input);
 
+    // Get by Id
+    Task<ProductDto> GetAsync(Guid id);
+
+
+    // Create
+    Task<ProductDto> CreateAsync(AddProductDto model);
+    // Update
+    Task<ProductDto> UpdateAsync(Guid id, UpdateProductDto model);
     // Delete
     Task DeleteAsync(Guid id);
-
-
-
 }

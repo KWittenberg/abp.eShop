@@ -1,13 +1,14 @@
 ﻿using System;
-using Volo.Abp.Application.Dtos;
+using System.ComponentModel.DataAnnotations;
 
 namespace eShop.Products;
 
-public class ProductDto : AuditedEntityDto<Guid>
+public class AddProductDto
 {
     public Guid CategoryId { get; set; }
-    public string CategoryName { get; set; }
     
+    [Required]
+    [StringLength(ProductConsts.MaxNameLength)]
     public string Name { get; set; }
     public string ImageUrl { get; set; }
     public float Price { get; set; }

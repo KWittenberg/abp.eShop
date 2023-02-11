@@ -24,16 +24,15 @@ public class eShopApplicationAutoMapperProfile : Profile
         CreateMap<UpdateCategoryDto, Category>();
 
 
-
-
-
-
-        CreateMap<Category, CategoryLookupDto>();
+        //CreateMap<Category, CategoryLookupDto>();
         //CreateMap<CreateUpdateCategoryDto, Category>();
         //CreateMap<CreateCategoryDto, Category>();
         //CreateMap<UpdateCategoryDto, Category>();
+        
         // Product
         CreateMap<Product, ProductDto>();
-        //CreateMap<CreateUpdateProductDto, Product>();
+        CreateMap<AddProductDto, Product>();
+        CreateMap<UpdateProductDto, Product>();
+        CreateMap<Category, CategoryLookupDto>();
     }
 }

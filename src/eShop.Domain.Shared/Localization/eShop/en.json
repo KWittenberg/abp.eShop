@@ -55,6 +55,10 @@
     "CategoryDeletionConfirmationMessage": "Are you sure to delete the category '{0}'?",
     "BirthDate": "Birth date",
     "NewCategory": "New category",
-    "CategoryName": "Category Name"
+    "CategoryName": "Category Name",
+    "NewProduct": "New Product",
+    "Category": "Category",
+    "IsFreeCargo": "Free Cargo",
+    "ReleaseDate": "Release Date"
   }
 }

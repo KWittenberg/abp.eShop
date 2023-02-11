@@ -39,13 +39,41 @@ public class ProductAppService : eShopAppService, IProductAppService
     }
 
     /// <summary>
+    /// Get by Id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<ProductDto> GetAsync(Guid id)
+    {
+        var product = await _productRepository.GetAsync(id);
+        return ObjectMapper.Map<Product, ProductDto>(product);
+    }
+
+
+    /// <summary>
     /// Create
     /// </summary>
-    /// <param name="input"></param>
+    /// <param name="model"></param>
     /// <returns></returns>
-    public async Task CreateAsync(CreateUpdateProductDto input)
+    public async Task<ProductDto> CreateAsync(AddProductDto model)
     {
-        await _productRepository.InsertAsync(ObjectMapper.Map<CreateUpdateProductDto, Product>(input));
+        var product = new Product();
+        ObjectMapper.Map(model, product);
+        product = await _productRepository.InsertAsync(product);
+        return ObjectMapper.Map<Product, ProductDto>(product);
+    }
+
+    /// <summary>
+    /// Update
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    public async Task<ProductDto> UpdateAsync(Guid id, UpdateProductDto model)
+    {
+        var product = await _productRepository.GetAsync(id);
+        ObjectMapper.Map(model, product);
+        return ObjectMapper.Map<Product, ProductDto>(product);
     }
 
     /// <summary>
