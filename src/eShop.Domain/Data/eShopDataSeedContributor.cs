@@ -36,7 +36,7 @@ public class eShopDataSeedContributor : IDataSeedContributor, ITransientDependen
             {
                 Category = books,
                 Name = "Rudina",
-                ImageUrl = "~/images/books/1997 Rudina.jpg",
+                ImageUrl = "/images/books/1997 Rudina.jpg",
                 Price = 33.99f,
                 ReleaseDate = new DateTime(1997, 01, 01),
                 StockState = ProductStockState.InStock
@@ -47,7 +47,7 @@ public class eShopDataSeedContributor : IDataSeedContributor, ITransientDependen
             {
                 Category = books,
                 Name = "Puvarija",
-                ImageUrl = "~/images/books/1998 Puvarija.jpg",
+                ImageUrl = "/images/books/1998 Puvarija.jpg",
                 Price = 33.99f,
                 IsFreeCargo = true,
                 ReleaseDate = new DateTime(1998, 01, 01),

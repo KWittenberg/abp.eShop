@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -17,6 +16,7 @@ public class TodoAppService : ApplicationService, ITodoAppService
     }
 
     // TODO: Implement the methods here...
+
     /// <summary>
     /// Get List
     /// </summary>
@@ -24,18 +24,44 @@ public class TodoAppService : ApplicationService, ITodoAppService
     public async Task<List<TodoItemDto>> GetListAsync()
     {
         var items = await _todoItemRepository.GetListAsync();
-        return items.Select(item => new TodoItemDto { Id = item.Id, Text = item.Text }).ToList();
+        return ObjectMapper.Map<List<TodoItem>, List<TodoItemDto>>(items);
+    }
+
+    /// <summary>
+    /// Get Todo List by Id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public async Task<TodoItemDto> GetAsync(Guid id)
+    {
+        var todoItem = await _todoItemRepository.GetAsync(id);
+        return ObjectMapper.Map<TodoItem, TodoItemDto>(todoItem);
     }
 
     /// <summary>
     /// Create
     /// </summary>
-    /// <param name="text"></param>
+    /// <param name="input"></param>
     /// <returns></returns>
-    public async Task<TodoItemDto> CreateAsync(string text)
+    public async Task<TodoItemDto> CreateAsync(AddTodoItemDto model)
     {
-        var todoItem = await _todoItemRepository.InsertAsync(new TodoItem { Text = text });
-        return new TodoItemDto { Id = todoItem.Id, Text = todoItem.Text };
+        var todoItem = ObjectMapper.Map<AddTodoItemDto, TodoItem>(model);
+        var createdTodoItem = await _todoItemRepository.InsertAsync(todoItem);
+
+        return ObjectMapper.Map<TodoItem, TodoItemDto>(createdTodoItem);
+    }
+
+    /// <summary>
+    /// Update
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    public async Task<TodoItemDto> UpdateAsync(Guid id, UpdateTodoItemDto model)
+    {
+        var todoItem = await _todoItemRepository.GetAsync(id);
+        ObjectMapper.Map(model, todoItem);
+        return ObjectMapper.Map<TodoItem, TodoItemDto>(todoItem);
     }
 
     /// <summary>

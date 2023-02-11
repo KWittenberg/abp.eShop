@@ -51,9 +51,9 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    public async Task<CategoryDto> CreateAsync(CreateCategoryDto input)
+    public async Task<CategoryDto> CreateAsync(AddCategoryDto model)
     {
-        var category = await _categoryManager.CreateAsync(input.Name);
+        var category = await _categoryManager.CreateAsync(model.Name);
         await _categoryRepository.InsertAsync(category);
         return ObjectMapper.Map<Category, CategoryDto>(category);
     }
@@ -64,18 +64,17 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
     /// <param name="id"></param>
     /// <param name="input"></param>
     /// <returns></returns>
-    public async Task UpdateAsync(Guid id, UpdateCategoryDto input)
+    public async Task<CategoryDto> UpdateAsync(Guid id, UpdateCategoryDto model)
     {
         var category = await _categoryRepository.GetAsync(id);
 
-        if (category.Name != input.Name)
+        if (category.Name != model.Name)
         {
-            await _categoryManager.ChangeNameAsync(category, input.Name);
+            await _categoryManager.ChangeNameAsync(category, model.Name);
         }
 
-        category.Name = input.Name;
-
-        await _categoryRepository.UpdateAsync(category);
+        ObjectMapper.Map(model, category);
+        return ObjectMapper.Map<Category, CategoryDto>(category);
     }
 
     /// <summary>
@@ -87,34 +86,4 @@ public class CategoryAppService : eShopAppService, ICategoryAppService
     {
         await _categoryRepository.DeleteAsync(id);
     }
-
-
-
-    /// <summary>
-    /// OLD Get List
-    /// </summary>
-    /// <returns></returns>
-    //public async Task<ListResultDto<CategoryDto>> GetListAsync()
-    //public async Task<List<CategoryDto>> GetListAsync()
-    //{
-    //    var categories = await _categoryRepository.GetListAsync();
-    //    return new List<CategoryDto>(ObjectMapper.Map<List<Category>, List<CategoryDto>>(categories));
-    //}
-
-    /// <summary>
-    /// OLD Create
-    /// </summary>
-    /// <param name="input"></param>
-    /// <returns></returns>
-    //public async Task CreateAsync(CreateUpdateCategoryDto input)
-    //{
-    //    await _categoryRepository.InsertAsync(ObjectMapper.Map<CreateUpdateCategoryDto, Category>(input));
-    //}
-
-
-    //public async Task<List<CategoryDto>> GetCategoriesAsync()
-    //{
-    //    var items = await _categoryRepository.GetListAsync();
-    //    return items.Select(item => new CategoryDto { Id = item.Id, Name = item.Name }).ToList();
-    //}
 }

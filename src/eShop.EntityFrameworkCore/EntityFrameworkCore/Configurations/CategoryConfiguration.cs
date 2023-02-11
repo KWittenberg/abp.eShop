@@ -1,7 +1,6 @@
 ﻿using eShop.Categories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace eShop.EntityFrameworkCore.Configurations;
 

@@ -2,7 +2,7 @@
 
 namespace eShop.Categories;
 
-public class CreateCategoryDto
+public class AddCategoryDto
 {
     [Required]
     [StringLength(CategoryConsts.MaxNameLength)]

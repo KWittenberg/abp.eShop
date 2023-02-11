@@ -15,11 +15,9 @@ public interface ICategoryAppService : IApplicationService
 
 
     // Create
-    Task<CategoryDto> CreateAsync(CreateCategoryDto input);
-
+    Task<CategoryDto> CreateAsync(AddCategoryDto model);
     // Update
-    Task UpdateAsync(Guid id, UpdateCategoryDto input);
-
+    Task<CategoryDto> UpdateAsync(Guid id, UpdateCategoryDto model);
     // Delete
     Task DeleteAsync(Guid id);
 }

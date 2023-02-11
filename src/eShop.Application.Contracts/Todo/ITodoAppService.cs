@@ -8,6 +8,8 @@ namespace eShop.Todo;
 public interface ITodoAppService : IApplicationService
 {
     Task<List<TodoItemDto>> GetListAsync();
-    Task<TodoItemDto> CreateAsync(string text);
+    Task<TodoItemDto> GetAsync(Guid id);
+    Task<TodoItemDto> CreateAsync(AddTodoItemDto model);
+    Task<TodoItemDto> UpdateAsync(Guid id, UpdateTodoItemDto model);
     Task DeleteAsync(Guid id);
 }
