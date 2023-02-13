@@ -15,8 +15,6 @@ public class TodoAppService : ApplicationService, ITodoAppService
         _todoItemRepository = todoItemRepository;
     }
 
-    // TODO: Implement the methods here...
-
     /// <summary>
     /// Get List
     /// </summary>
@@ -45,10 +43,10 @@ public class TodoAppService : ApplicationService, ITodoAppService
     /// <returns></returns>
     public async Task<TodoItemDto> CreateAsync(AddTodoItemDto model)
     {
-        var todoItem = ObjectMapper.Map<AddTodoItemDto, TodoItem>(model);
-        var createdTodoItem = await _todoItemRepository.InsertAsync(todoItem);
-
-        return ObjectMapper.Map<TodoItem, TodoItemDto>(createdTodoItem);
+        var todoItem = new TodoItem();
+        ObjectMapper.Map(model, todoItem);
+        todoItem = await _todoItemRepository.InsertAsync(todoItem);
+        return ObjectMapper.Map<TodoItem, TodoItemDto>(todoItem);
     }
 
     /// <summary>

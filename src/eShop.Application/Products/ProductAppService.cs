@@ -28,8 +28,6 @@ public class ProductAppService : eShopAppService, IProductAppService
     /// <returns></returns>
     public async Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input)
     {
-        /* TODO: Implementation */
-
         var queryable = await _productRepository.WithDetailsAsync(x => x.Category);
         queryable = queryable.Skip(input.SkipCount).Take(input.MaxResultCount).OrderBy(input.Sorting ?? nameof(Product.Name));
 

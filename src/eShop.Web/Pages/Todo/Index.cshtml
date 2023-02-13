@@ -32,12 +32,6 @@
     <div class="panel panel-inverse" data-sortable-id="table-basic-7">
         <div class="panel-heading">
             <h4 class="panel-title">Todo List <span class="badge bg-success ms-5px">PRO</span></h4>
-            @*<div class="panel-heading-btn">
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
-            </div>*@
         </div>
         <!-- BEGIN panel-body -->
         <div class="panel-body">
@@ -62,7 +56,6 @@
                                 <td nowrap>
                                     <div class="btn-group btn-group-sm">
                                         <a asp-controller="ProductCategory" asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                        @*<form asp-controller="ProductCategory" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="bi bi-trash"></i></button></form>*@
                                         <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>
@@ -91,8 +84,8 @@
         <abp-card-header>
             <abp-card-title>Todo List</abp-card-title>
         </abp-card-header>
-        <abp-card-body>            
-            
+        <abp-card-body>
+
             <!-- FORM FOR NEW TODO ITEMS -->
             <form id="NewItemForm" class="row row-cols-lg-auto g-3 align-items-center">
                 <div class="col-12">
@@ -101,10 +94,10 @@
                     </div>
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Dodaj</button>
+                    <button type="submit" class="btn btn-primary">Dodaj</button>
                 </div>
             </form>
-            
+
             <!-- TODO ITEMS LIST -->
             <ul id="TodoList">
                 @foreach (var todoItem in Model.TodoItems)
