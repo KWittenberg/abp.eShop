@@ -27,6 +27,7 @@ public class eShopDbContext : AbpDbContext<eShopDbContext>, IIdentityDbContext, 
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
     // Add Todo
+    public DbSet<TodoList> TodoLists { get; set; }
     public DbSet<TodoItem> TodoItems { get; set; }
 
     // Add Category

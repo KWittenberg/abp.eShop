@@ -41,7 +41,5 @@ namespace eShop.Web.Pages.Products
             await _productAppService.UpdateAsync(Id, ObjectMapper.Map<UpdateProductViewModel, UpdateProductDto>(Product));
             return NoContent();
         }
-
-
     }
 }

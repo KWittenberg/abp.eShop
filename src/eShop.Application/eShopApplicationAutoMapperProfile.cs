@@ -14,6 +14,10 @@ public class eShopApplicationAutoMapperProfile : Profile
          * into multiple profile classes for a better organization. */
 
         // Todo
+        CreateMap<TodoList, TodoListDto>();
+        CreateMap<AddTodoListDto, TodoList>();
+        CreateMap<UpdateTodoListDto, TodoItem>();
+
         CreateMap<TodoItem, TodoItemDto>();
         CreateMap<AddTodoItemDto, TodoItem>();
         CreateMap<UpdateTodoItemDto, TodoItem>();

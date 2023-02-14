@@ -1,4 +1,5 @@
 ﻿using eShop.Categories;
+using eShop.Todo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,7 @@ public class ProductAppService : eShopAppService, IProductAppService
     public async Task<ProductDto> GetAsync(Guid id)
     {
         var product = await _productRepository.GetAsync(id);
+        // if (product == null) { return null; } nije potrebno u Get
         return ObjectMapper.Map<Product, ProductDto>(product);
     }
 
@@ -70,6 +72,7 @@ public class ProductAppService : eShopAppService, IProductAppService
     public async Task<ProductDto> UpdateAsync(Guid id, UpdateProductDto model)
     {
         var product = await _productRepository.GetAsync(id);
+        if (product == null) { throw new EntryPointNotFoundException(); } //obavezno na Update
         ObjectMapper.Map(model, product);
         return ObjectMapper.Map<Product, ProductDto>(product);
     }
@@ -81,6 +84,8 @@ public class ProductAppService : eShopAppService, IProductAppService
     /// <returns></returns>
     public async Task DeleteAsync(Guid id)
     {
+        var product = await _productRepository.GetAsync(id);
+        if (product == null) { throw new EntryPointNotFoundException(); }
         await _productRepository.DeleteAsync(id);
     }
 

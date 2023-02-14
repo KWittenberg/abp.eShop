@@ -1,25 +1,26 @@
 ﻿@page
-@using Microsoft.Extensions.Localization
-@using eShop.Localization
-@model eShop.Web.Pages.Categories.IndexModel
-@inject IStringLocalizer<eShopResource> L
+@model eShop.Web.Pages.Todo.TodoItems
 @{
-    ViewData["Title"] = "Categories";
+    ViewData["Title"] = "TodoItems";
     int counter = 1;
 }
-@*@section scripts {
-    <abp-script src="/Pages/Categories/Index.cshtml.js" />
-}*@
+
+@section styles {
+    <abp-style src="/Pages/Todo/Index.css" />
+}
+@section scripts {
+    <abp-script src="/Pages/Todo/Index.js" />
+}
 
 
-<!-- Categories -->
+<!-- Todo -->
 <div class="d-flex align-items-center mb-3">
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="~/">Home</a></li>
-            <li class="breadcrumb-item active">Categories</li>
+            <li class="breadcrumb-item active">Todo</li>
         </ol>
-        <h1 class="page-header mb-0">Categories</h1>
+        <h1 class="page-header mb-0">Todo</h1>
     </div>
     <div class="ms-auto">
         <a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</a>
@@ -29,7 +30,7 @@
     <!-- BEGIN panel -->
     <div class="panel panel-inverse" data-sortable-id="table-basic-7">
         <div class="panel-heading">
-            <h4 class="panel-title">Categories <span class="badge bg-success ms-5px">PRO</span></h4>
+            <h4 class="panel-title">Todo Items <span class="badge bg-success ms-5px">PRO</span></h4>
         </div>
         <!-- BEGIN panel-body -->
         <div class="panel-body">
@@ -39,22 +40,23 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Id</th>
-                            <th style="width: 50%">Category</th>
+                            <th>Description</th>
+                            <th>IsDone</th>
+                            @*<th style="width: 50%">Category</th>*@
                             <th style="width: 11%"><a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> &nbsp; Add New</a></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Categories)
+                        @foreach (var item in Model.TodoItem)
                         {
                             <tr>
                                 <td>@counter</td>
-                                <td>@item.Id</td>
-                                <td>@item.Name</td>
+                                <td>@item.Description</td>
+                                <td>@item.IsDone</td>
+                                @*<td>item.Name</td>*@
                                 <td nowrap>
                                     <div class="btn-group btn-group-sm">
                                         <a asp-controller="ProductCategory" asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                        <!--<form asp-controller="ProductCategory" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="bi bi-trash"></i></button></form>-->
                                         <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>

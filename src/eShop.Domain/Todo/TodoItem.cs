@@ -1,9 +1,14 @@
 ﻿using System;
-using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Entities.Auditing;
 
 namespace eShop.Todo;
 
-public class TodoItem : BasicAggregateRoot<Guid>
+public class TodoItem : AuditedAggregateRoot<Guid>
 {
-    public string Text { get; set; }
+    public string Description { get; set; }
+    public bool IsDone { get; set; }
+
+    // Add TodoList
+    public TodoList TodoList { get; set; }
+    public Guid TodoListId { get; set; }
 }

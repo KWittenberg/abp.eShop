@@ -1,8 +1,7 @@
 ﻿@page
 @model eShop.Web.Pages.Todo.IndexModel
 @{
-    ViewData["Title"] = "Todo";
-    //Layout = "_LayoutADMIN";
+    ViewData["Title"] = "TodoList";
     int counter = 1;
 }
 
@@ -47,14 +46,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.TodoItems)
+                        @foreach (var item in Model.TodoLists)
                         {
                             <tr>
                                 <td>@counter</td>
-                                <td>@item.Text</td>
+                                <td>@item.Title</td>
                                 @*<td>item.Name</td>*@
                                 <td nowrap>
                                     <div class="btn-group btn-group-sm">
+                                        <a asp-controller="TodoItems" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
                                         <a asp-controller="ProductCategory" asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
                                         <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
                                     </div>
@@ -79,7 +79,7 @@
 
 
 
-<div class="container">
+@*<div class="container">
     <abp-card>
         <abp-card-header>
             <abp-card-title>Todo List</abp-card-title>
@@ -100,11 +100,11 @@
 
             <!-- TODO ITEMS LIST -->
             <ul id="TodoList">
-                @foreach (var todoItem in Model.TodoItems)
+                @foreach (var todoItem in Model.TodoLists)
                 {
-                    <li data-id="@todoItem.Id"><i class="fa fa-trash-o"></i> @todoItem.Text</li>
+                    <li data-id="@todoItem.Id"><i class="fa fa-trash-o"></i> @todoItem.Title</li>
                 }
             </ul>
         </abp-card-body>
     </abp-card>
-</div>
+</div>*@

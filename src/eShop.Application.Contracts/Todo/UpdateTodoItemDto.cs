@@ -1,10 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace eShop.Todo;
 
-namespace eShop.Todo;
-
-public class UpdateTodoItemDto
+public class UpdateTodoItemDto : AddTodoItemDto
 {
-    [Required]
-    [StringLength(128)]
-    public string Text { get; set; }
 }
