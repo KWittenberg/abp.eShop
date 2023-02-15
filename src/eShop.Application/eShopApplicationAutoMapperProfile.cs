@@ -38,5 +38,8 @@ public class eShopApplicationAutoMapperProfile : Profile
         CreateMap<AddProductDto, Product>();
         CreateMap<UpdateProductDto, Product>();
         CreateMap<Category, CategoryLookupDto>();
+
+        CreateMap<ProductImage, ProductImageDto>();
+        CreateMap<AddProductImageDto, ProductImage>();
     }
 }

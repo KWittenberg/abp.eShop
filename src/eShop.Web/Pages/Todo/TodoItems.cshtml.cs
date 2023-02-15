@@ -6,7 +6,7 @@ namespace eShop.Web.Pages.Todo;
 public class TodoItems : eShopPageModel
 {
     public List<TodoItemDto> TodoItem { get; set; }
-    public Guid todoListId { get; private set; }
+    public Guid TodoListId { get; set; }
 
     private readonly ITodoAppService _todoAppService;
 
@@ -15,8 +15,8 @@ public class TodoItems : eShopPageModel
         _todoAppService = todoAppService;
     }
 
-    public async Task OnGetAsync()
+    public async Task OnGetAsync(Guid Id)
     {
-        TodoItem = await _todoAppService.GetAllTodoItemsInTodoListById(todoListId);
+        TodoItem = await _todoAppService.GetAllTodoItemsInTodoListById(Id);
     }
 }

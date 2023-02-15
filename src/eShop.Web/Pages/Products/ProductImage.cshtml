@@ -1,5 +1,5 @@
 ﻿@page
-@model eShop.Web.Pages.Todo.TodoItems
+@model eShop.Web.Pages.Products.ProductImage
 @{
     ViewData["Title"] = "TodoItems";
     int counter = 1;
@@ -18,9 +18,9 @@
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="~/">Home</a></li>
-            <li class="breadcrumb-item active">Todo</li>
+            <li class="breadcrumb-item active">ProductImage</li>
         </ol>
-        <h1 class="page-header mb-0">Todo</h1>
+        <h1 class="page-header mb-0">Product Images</h1>
     </div>
     <div class="ms-auto">
         <a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</a>
@@ -30,7 +30,7 @@
     <!-- BEGIN panel -->
     <div class="panel panel-inverse" data-sortable-id="table-basic-7">
         <div class="panel-heading">
-            <h4 class="panel-title">Todo Items <span class="badge bg-success ms-5px">PRO</span></h4>
+            <h4 class="panel-title">Product Images <span class="badge bg-success ms-5px">PRO</span></h4>
         </div>
         <!-- BEGIN panel-body -->
         <div class="panel-body">
@@ -39,20 +39,20 @@
                 <table class="table table-hover mb-0 align-middle">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Description</th>
-                            <th>IsDone</th>
+                            <th style="width: 2%">#</th>
+                            <th style="width: 15%">Image</th>
+                            <th style="width: 25%">Name</th>
                             @*<th style="width: 50%">Category</th>*@
                             <th style="width: 11%"><a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> &nbsp; Add New</a></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.TodoItem)
+                        @foreach (var item in Model.ProductImages)
                         {
                             <tr>
                                 <td>@counter</td>
-                                <td>@item.Description</td>
-                                <td>@item.IsDone</td>
+                                <td><a href="@item.ImageUrl" class="popupImg"><img src="@item.ImageUrl" width="200" /></a></td>
+                                <td>@item.Name</td>
                                 @*<td>item.Name</td>*@
                                 <td nowrap>
                                     <div class="btn-group btn-group-sm">

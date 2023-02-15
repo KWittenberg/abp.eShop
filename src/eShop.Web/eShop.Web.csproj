@@ -22,10 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Products\ProductImage.cshtml" />
     <Content Remove="Pages\Todo\TodoItems.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Products\ProductImage.cshtml" />
     <None Include="Pages\Todo\TodoItems.cshtml" />
     <None Include="Pages\Todo\Index.cshtml" />
   </ItemGroup>

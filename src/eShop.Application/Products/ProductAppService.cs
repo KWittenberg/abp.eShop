@@ -1,4 +1,5 @@
 ﻿using eShop.Categories;
+using eShop.Products;
 using eShop.Todo;
 using System;
 using System.Collections.Generic;
@@ -7,21 +8,24 @@ using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.ObjectMapping;
 
 namespace eShop.Products;
 
 public class ProductAppService : eShopAppService, IProductAppService
 {
     private readonly IRepository<Product, Guid> _productRepository;
+    private readonly IRepository<ProductImage, Guid> _productImageRepository;
     private readonly IRepository<Category, Guid> _categoryRepository;
 
-    public ProductAppService(IRepository<Product, Guid> productRepository, IRepository<Category, Guid> categoryRepository)
+    public ProductAppService(IRepository<Product, Guid> productRepository, IRepository<ProductImage, Guid> productImageRepository, IRepository<Category, Guid> categoryRepository)
     {
         _productRepository = productRepository;
+        _productImageRepository = productImageRepository;
         _categoryRepository = categoryRepository;
     }
 
-
+    // Product //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
     /// Get List
     /// </summary>
@@ -99,4 +103,37 @@ public class ProductAppService : eShopAppService, IProductAppService
         var categories = await _categoryRepository.GetListAsync();
         return new ListResultDto<CategoryLookupDto>(ObjectMapper.Map<List<Category>, List<CategoryLookupDto>>(categories));
     }
+
+
+
+    // Product Image ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>
+    /// Get Product Images
+    /// </summary>
+    /// <param name="productId"></param>
+    /// <returns></returns>
+    public async Task<List<ProductImageDto>> GetProductImagesByProductId(Guid productId)
+    {
+        var productImage = await _productImageRepository.GetListAsync(x => x.ProductId == productId);
+        return ObjectMapper.Map<List<ProductImage>, List<ProductImageDto>>(productImage);
+    }
+    
+    /// <summary>
+    /// Create Product Image
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="EntryPointNotFoundException"></exception>
+    public async Task<ProductImageDto> CreateProductImage(AddProductImageDto model)
+    {
+        var product = await _productRepository.FirstOrDefaultAsync(x => x.Id == model.ProductId);
+        if (product is null) throw new EntryPointNotFoundException("Product Not Found.");
+
+        var productImage = ObjectMapper.Map<AddProductImageDto, ProductImage>(model);
+        productImage.Product = product;
+        productImage = await _productImageRepository.InsertAsync(productImage);
+        return ObjectMapper.Map<ProductImage, ProductImageDto>(productImage);
+    }
+
+
 }
