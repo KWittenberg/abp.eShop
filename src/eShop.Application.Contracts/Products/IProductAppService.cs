@@ -28,5 +28,7 @@ public interface IProductAppService : IApplicationService
 
     // Product Image //////////////////////////////////////////////////////////
     Task<List<ProductImageDto>> GetProductImagesByProductId(Guid productId);
-
+    Task<ProductImageDto> CreateProductImage(AddProductImageDto model);
+    Task<ProductImageDto> UpdateProductImage(Guid productImageId, UpdateProductImageDto model);
+    Task DeleteProductImage(Guid productImageId);
 }

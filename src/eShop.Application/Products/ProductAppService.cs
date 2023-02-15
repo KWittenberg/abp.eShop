@@ -1,6 +1,4 @@
 ﻿using eShop.Categories;
-using eShop.Products;
-using eShop.Todo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +6,6 @@ using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
-using Volo.Abp.ObjectMapping;
 
 namespace eShop.Products;
 
@@ -52,7 +49,6 @@ public class ProductAppService : eShopAppService, IProductAppService
         // if (product == null) { return null; } nije potrebno u Get
         return ObjectMapper.Map<Product, ProductDto>(product);
     }
-
 
     /// <summary>
     /// Create
@@ -117,7 +113,7 @@ public class ProductAppService : eShopAppService, IProductAppService
         var productImage = await _productImageRepository.GetListAsync(x => x.ProductId == productId);
         return ObjectMapper.Map<List<ProductImage>, List<ProductImageDto>>(productImage);
     }
-    
+
     /// <summary>
     /// Create Product Image
     /// </summary>
@@ -135,5 +131,31 @@ public class ProductAppService : eShopAppService, IProductAppService
         return ObjectMapper.Map<ProductImage, ProductImageDto>(productImage);
     }
 
+    /// <summary>
+    /// Update Product Image
+    /// </summary>
+    /// <param name="productImageId"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    /// <exception cref="EntryPointNotFoundException"></exception>
+    public async Task<ProductImageDto> UpdateProductImage(Guid productImageId, UpdateProductImageDto model)
+    {
+        var productImage = await _productImageRepository.GetAsync(productImageId);
+        if (productImage is null) throw new EntryPointNotFoundException("Product Image Not Found.");
+        ObjectMapper.Map(model, productImage);
+        return ObjectMapper.Map<ProductImage, ProductImageDto>(productImage);
+    }
 
+    /// <summary>
+    /// Delete Product Image
+    /// </summary>
+    /// <param name="productImageId"></param>
+    /// <returns></returns>
+    /// <exception cref="EntryPointNotFoundException"></exception>
+    public async Task DeleteProductImage(Guid productImageId)
+    {
+        var productImage = await _productImageRepository.GetAsync(productImageId);
+        if (productImage is null) throw new EntryPointNotFoundException("Product Image Not Found.");
+        await _productImageRepository.DeleteAsync(productImage);
+    }
 }
