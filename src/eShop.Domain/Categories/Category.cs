@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using System;
+using System.ComponentModel.DataAnnotations;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 
@@ -8,8 +9,7 @@ namespace eShop.Categories;
 public class Category : FullAuditedAggregateRoot<Guid>
 {
     public string Name { get; set; }
-
-
+    
 
     // Add for Category Manager
     private Category()
