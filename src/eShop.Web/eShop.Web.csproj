@@ -24,12 +24,14 @@
   <ItemGroup>
     <Content Remove="Pages\Products\ProductImage.cshtml" />
     <Content Remove="Pages\Todo\TodoItems.cshtml" />
+    <Content Remove="Pages\Users\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\Products\ProductImage.cshtml" />
     <None Include="Pages\Todo\TodoItems.cshtml" />
     <None Include="Pages\Todo\Index.cshtml" />
+    <None Include="Pages\Users\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\eShop.Infrastructure\eShop.Infrastructure.csproj" />
     <ProjectReference Include="..\eShop.Application\eShop.Application.csproj" />
     <ProjectReference Include="..\eShop.HttpApi\eShop.HttpApi.csproj" />
     <ProjectReference Include="..\eShop.EntityFrameworkCore\eShop.EntityFrameworkCore.csproj" />

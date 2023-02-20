@@ -1,5 +1,4 @@
-﻿using eShop.Products;
-using eShop.Todo;
+﻿using eShop.Todo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,0 +1,80 @@
+﻿@page
+@model eShop.Web.Pages.Users.IndexModel
+@{
+    ViewData["Title"] = "Users";
+    int counter = 1;
+}
+
+@*@section styles {
+    <abp-style src="/Pages/Todo/Index.css" />
+}
+@section scripts {
+    <abp-script src="/Pages/Todo/Index.js" />
+}*@
+
+
+<!-- Todo -->
+<div class="d-flex align-items-center mb-3">
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="~/">Home</a></li>
+            <li class="breadcrumb-item active">Users</li>
+        </ol>
+        <h1 class="page-header mb-0">Users</h1>
+    </div>
+    <div class="ms-auto">
+        <button class="btn btn-success btn-rounded px-4 rounded-pill" id="NewTodoListButton"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</button>
+        @*<a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</a>*@
+    </div>
+</div>
+<div class="mt-5 container col-xl-12">
+    <!-- BEGIN panel -->
+    <div class="panel panel-inverse" data-sortable-id="table-basic-7">
+        <div class="panel-heading">
+            <h4 class="panel-title">Users <span class="badge bg-success ms-5px">PRO</span></h4>
+        </div>
+        <!-- BEGIN panel-body -->
+        <div class="panel-body">
+            <!-- BEGIN table-responsive -->
+            <div class="table-responsive">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>UserName</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Email</th>
+                            <th>PhoneNumber</th>
+                            @*<th style="width: 50%">Category</th>*@
+                            <th style="width: 11%"><a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> &nbsp; Add New</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Users)
+                        {
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname</td>
+                                <td>@item.Email</td>
+                                <td>@item.PhoneNumber</td>
+                                <td nowrap>
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-page="/Todo/TodoItems" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
+                                        <a asp-controller="ProductCategory" asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                        <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="deleteForm" asp-action="Delete"><input type="hidden" id="leaveTypeId" name="Id" /></form>

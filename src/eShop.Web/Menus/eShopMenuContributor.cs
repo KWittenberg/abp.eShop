@@ -24,7 +24,9 @@ public class eShopMenuContributor : IMenuContributor
         var l = context.GetLocalizer<eShopResource>();
 
         context.Menu.Items.Insert(0, new ApplicationMenuItem( eShopMenus.Home, l["Menu:Home"], "~/", icon: "fas fa-home", order: 0));
-        context.Menu.Items.Insert(0, new ApplicationMenuItem( eShopMenus.Home, l["Menu:Todo"], url: "/Todo", icon: "fa fa-th-list", order: 1));
+        context.Menu.Items.Insert(0, new ApplicationMenuItem( eShopMenus.Home, l["Menu:Users"], "~/Users", icon: "fas fa-user", order: 1));
+        context.Menu.Items.Insert(0, new ApplicationMenuItem( eShopMenus.Home, l["Menu:Todo"], url: "/Todo", icon: "fa fa-th-list", order: 2));
+        context.Menu.Items.Insert(0, new ApplicationMenuItem( eShopMenus.Home, l["Menu:Blog"], url: "/Blog", icon: "fas fa-blog", order: 3));
         //context.Menu.Items.Insert(0, new ApplicationMenuItem( eShopMenus.Home, l["Menu:Products"], url: "/Products", icon: "fas fa-shopping-cart", order: 2));
 
         context.Menu.AddItem(new ApplicationMenuItem("eShop", l["Menu:eShop"], icon: "fas fa-shopping-cart")
