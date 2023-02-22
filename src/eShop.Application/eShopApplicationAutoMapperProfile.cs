@@ -51,5 +51,6 @@ public class eShopApplicationAutoMapperProfile : Profile
         // User
         CreateMap<IdentityUser, UserDto>();
         
+        
     }
 }

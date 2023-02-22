@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\eShop.Infrastructure\eShop.Infrastructure.csproj" />
+    <ProjectReference Include="..\eShop.Infrastructure\eShop.Infrastructure.csproj" />
     <ProjectReference Include="..\eShop.Application\eShop.Application.csproj" />
     <ProjectReference Include="..\eShop.HttpApi\eShop.HttpApi.csproj" />
     <ProjectReference Include="..\eShop.EntityFrameworkCore\eShop.EntityFrameworkCore.csproj" />

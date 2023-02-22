@@ -51,7 +51,7 @@ public class TodoAppService : ApplicationService, ITodoAppService
     /// <param name="model"></param>
     /// <returns></returns>
     /// <exception cref="EntryPointNotFoundException"></exception>
-    public async Task<TodoListDto> CreateTodoListAsync(AddTodoListDto model)
+    public virtual async Task<TodoListDto> CreateTodoListAsync(AddTodoListDto model)
     {
         var userId = _currentUser.Id;
         if (userId is null) throw new EntryPointNotFoundException("User Not Found.");
@@ -72,7 +72,7 @@ public class TodoAppService : ApplicationService, ITodoAppService
     /// <param name="model"></param>
     /// <returns></returns>
     /// <exception cref="EntryPointNotFoundException"></exception>
-    public async Task<TodoListDto> UpdateTodoListAsync(Guid todoListId, UpdateTodoListDto model)
+    public virtual async Task<TodoListDto> UpdateTodoListAsync(Guid todoListId, UpdateTodoListDto model)
     {
         var todoList = await _todoListRepository.GetAsync(todoListId);
         if (todoList is null) throw new EntryPointNotFoundException("TodoList Not Found.");
