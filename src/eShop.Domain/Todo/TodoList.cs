@@ -16,23 +16,37 @@ public class TodoList : AuditedAggregateRoot<Guid>
     public Guid UserId { get; set; }
 
 
-    //// konstruktor općenito u Create, a set u Update 
-    //public TodoList(Guid userId, string title)
-    //{
-    //    UserId = userId;
-    //    SetTitle(title);
 
-    //    TodoItems = new List<TodoItem>();
-    //}
 
-    //// u slučaju MongoDB ili sličnog zbog skalabilnosti
-    //public TodoList(Guid id, Guid userId, string title) : this(userId, title)    //{
-    //    Id = id;
-    //}
 
-    //// Seter za Title
-    //public void SetTitle(string title)
-    //{
-    //    Title = title;
-    //}
+
+
+
+   
+
+
+    // konstruktor općenito u Create, a set u Update 
+    public TodoList(Guid userId, string title)
+    {
+        UserId = userId;
+        SetTitle(title);
+
+        TodoItems = new List<TodoItem>();
+    }
+
+    // u slučaju MongoDB ili sličnog zbog skalabilnosti
+    public TodoList(Guid id, Guid userId, string title) : this(userId, title)    {
+        Id = id;
+    }
+
+    public TodoList()
+    {
+        /* This constructor is for deserialization / ORM purpose */
+    }
+
+    // Seter za Title
+    public void SetTitle(string title)
+    {
+        Title = title;
+    }
 }

@@ -19,7 +19,7 @@ namespace eShop.Infrastructure.Repositories
         public async Task<List<Blog.Blog>> GetBlogs()
         {
             var dbContext = await GetDbContextAsync();
-            var blogs = await dbContext.Blogs.Include(x => x.User).ToListAsync();
+            var blogs = await dbContext.Blogs.Include(x => x.User).OrderByDescending(x => x.CreationTime).ToListAsync();
             return blogs;
         }
 

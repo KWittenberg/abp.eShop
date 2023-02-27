@@ -29,6 +29,11 @@ public class TodoAppService : ApplicationService, ITodoAppService
     public async Task<List<TodoListDto>> GetAllTodoListAsync()
     {
         var userId = _currentUser.Id;
+
+        // If use MongoDB u have trouble! - Don't use this way!!!
+        // var query = await _todoListRepository.GetQueryableAsync();
+        // var todoLists = query.Where(it => it.UserId == userId).OrderByDescending(x => x.CreationTime).ToList();
+
         var todoLists = await _todoListRepository.GetListAsync(x => x.UserId == userId);
         return ObjectMapper.Map<List<TodoList>, List<TodoListDto>>(todoLists);
     }
@@ -79,7 +84,7 @@ public class TodoAppService : ApplicationService, ITodoAppService
         ObjectMapper.Map(model, todoList);
         return ObjectMapper.Map<TodoList, TodoListDto>(todoList);
     }
-    
+
     /// <summary>
     /// Delete TodoList
     /// </summary>

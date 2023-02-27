@@ -1,16 +1,10 @@
 ﻿using eShop.Interfaces.Repositories;
-using eShop.Users;
-using Polly;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Identity;
-using Volo.Abp.ObjectMapping;
 using Volo.Abp.Users;
 
 namespace eShop.Blog;
