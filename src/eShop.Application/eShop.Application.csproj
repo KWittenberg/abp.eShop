@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\eShop.Domain\eShop.Domain.csproj" />
     <ProjectReference Include="..\eShop.Application.Contracts\eShop.Application.Contracts.csproj" />
+    <ProjectReference Include="..\eShop.EntityFrameworkCore\eShop.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppServices\" />
+    <Folder Include="Interfaces\Repositories\" />
   </ItemGroup>
 
 </Project>

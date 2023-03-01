@@ -1,7 +1,4 @@
-﻿using eShop.Categories;
-using eShop.Products;
-using eShop.Todo;
-using eShop.Blog;
+﻿using eShop.Entities.Blogs;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -17,6 +14,9 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using eShop.Entities.Todo;
+using eShop.Entities.Products;
+using eShop.Entities.Categories;
 
 namespace eShop.EntityFrameworkCore;
 
@@ -39,7 +39,7 @@ public class eShopDbContext : AbpDbContext<eShopDbContext>, IIdentityDbContext, 
     public DbSet<ProductImage> ProductImages { get; set; }
 
     // Add Blog
-    public DbSet<Blog.Blog> Blogs { get; set; }
+    public DbSet<Blog> Blogs { get; set; }
 
 
     #region Entities from the modules

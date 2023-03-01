@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace eShop.Data;
+﻿namespace eShop.Data;
 
 public interface IeShopDbSchemaMigrator
 {

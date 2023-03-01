@@ -1,6 +1,3 @@
-using eShop.Todo;
-using Microsoft.AspNetCore.Mvc;
-
 namespace eShop.Web.Pages.Todo;
 
 public class AddTodoListModalModel : eShopPageModel
@@ -36,5 +33,4 @@ public class AddTodoListModalModel : eShopPageModel
         await _todoAppService.CreateTodoListAsync(ObjectMapper.Map<AddTodoListViewModel, AddTodoListDto>(TodoList));
         return NoContent();
     }
-
 }

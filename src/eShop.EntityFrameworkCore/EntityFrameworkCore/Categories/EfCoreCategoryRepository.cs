@@ -1,11 +1,4 @@
-﻿using eShop.Categories;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Dynamic.Core;
-using System.Threading.Tasks;
-using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+﻿using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace eShop.EntityFrameworkCore.Categories;

@@ -1,4 +1,5 @@
-using eShop.Blog;
+using eShop.AppServices.Blogs;
+using eShop.Common.Dtos;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 

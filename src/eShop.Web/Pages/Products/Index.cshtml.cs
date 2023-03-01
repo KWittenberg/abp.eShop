@@ -1,7 +1,3 @@
-using eShop.Products;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-
 namespace eShop.Web.Pages.Products;
 
 public class IndexModel : PageModel

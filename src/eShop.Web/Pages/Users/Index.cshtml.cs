@@ -1,6 +1,3 @@
-using eShop.Users;
-using System.Collections.Generic;
-
 namespace eShop.Web.Pages.Users;
 
 public class IndexModel : eShopPageModel

@@ -1,12 +1,8 @@
-﻿using eShop.Blog;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿namespace eShop.EntityFrameworkCore.Configurations;
 
-namespace eShop.EntityFrameworkCore.Configurations;
-
-public class BlogConfiguration : IEntityTypeConfiguration<Blog.Blog>
+public class BlogConfiguration : IEntityTypeConfiguration<Blog>
 {
-    public void Configure(EntityTypeBuilder<Blog.Blog> builder)
+    public void Configure(EntityTypeBuilder<Blog> builder)
     {
         builder.ToTable("Blogs");
         builder.Property(x => x.Title).HasMaxLength(BlogConsts.MaxNameLength).IsRequired();

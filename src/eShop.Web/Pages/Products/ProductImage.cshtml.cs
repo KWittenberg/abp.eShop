@@ -1,7 +1,3 @@
-using eShop.Products;
-using eShop.Todo;
-using System.Collections.Generic;
-
 namespace eShop.Web.Pages.Products;
 
 public class ProductImage : eShopPageModel
@@ -10,7 +6,7 @@ public class ProductImage : eShopPageModel
     public Guid ProductId { get; set; }
 
     private readonly IProductAppService _productAppService;
-    
+
     public ProductImage(IProductAppService productAppService)
     {
         _productAppService = productAppService;

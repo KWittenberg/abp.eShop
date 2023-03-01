@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Volo.Abp.DependencyInjection;
-
-namespace eShop.Data;
+﻿namespace eShop.Data;
 
 /* This is used if database provider does't define
  * IeShopDbSchemaMigrator implementation.

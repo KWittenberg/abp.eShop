@@ -1,10 +1,3 @@
-using eShop.Products;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Volo.Abp.ObjectMapping;
-
 namespace eShop.Web.Pages.Products
 {
     public class AddProductModalModel : eShopPageModel
@@ -40,6 +33,5 @@ namespace eShop.Web.Pages.Products
             await _productAppService.CreateAsync(ObjectMapper.Map<AddProductViewModel, AddProductDto>(Product));
             return NoContent();
         }
-
     }
 }

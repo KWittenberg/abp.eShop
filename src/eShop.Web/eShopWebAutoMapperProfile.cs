@@ -1,7 +1,4 @@
-﻿using eShop.Products;
-using eShop.Web.Pages.Products;
-
-namespace eShop.Web;
+﻿namespace eShop.Web;
 
 public class eShopWebAutoMapperProfile : Profile
 {

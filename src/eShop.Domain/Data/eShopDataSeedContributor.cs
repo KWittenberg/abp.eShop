@@ -1,10 +1,5 @@
-﻿using eShop.Categories;
-using eShop.Products;
-using System;
-using System.Threading.Tasks;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Domain.Repositories;
+﻿using eShop.Entities.Categories;
+using eShop.Entities.Products;
 
 namespace eShop.Data;
 
@@ -23,7 +18,6 @@ public class eShopDataSeedContributor : IDataSeedContributor, ITransientDependen
     public async Task SeedAsync(DataSeedContext context)
     {
         /***** TODO: Seed initial data here *****/
-
 
 
         if (await _categoryRepository.GetCountAsync() <= 0)

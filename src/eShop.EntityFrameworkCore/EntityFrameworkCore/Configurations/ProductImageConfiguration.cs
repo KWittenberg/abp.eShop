@@ -1,8 +1,4 @@
-﻿using eShop.Products;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace eShop.EntityFrameworkCore.Configurations;
+﻿namespace eShop.EntityFrameworkCore.Configurations;
 
 public class ProductImageConfiguration : IEntityTypeConfiguration<ProductImage>
 {

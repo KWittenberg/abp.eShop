@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
-using Volo.Abp.Domain.Values;
-
-namespace eShop.ValueObjects;
+﻿namespace eShop.ValueObjects;
 
 public class Address : ValueObject
 {
-    public string? Country { get; private set; }
-    
-    public string? CountryCode { get; private set; }
-    
-    public string? PostalCode { get; private set; }
-    
-    public string? City { get; private set; }
+    public AddressType Type { get; private set; }
 
-    public string? Street { get; private set; }
+    public string Country { get; private set; }
 
-    public string? Number { get; private set; }
+    public string CountryCode { get; private set; }
+
+    public string PostalCode { get; private set; }
+
+    public string City { get; private set; }
+
+    public string Street { get; private set; }
+
+    public string Number { get; private set; }
+
 
     private Address()
     {
@@ -39,6 +39,7 @@ public class Address : ValueObject
 
     protected override IEnumerable<object> GetAtomicValues()
     {
+        yield return Type;
         yield return Country;
         yield return CountryCode;
         yield return PostalCode;

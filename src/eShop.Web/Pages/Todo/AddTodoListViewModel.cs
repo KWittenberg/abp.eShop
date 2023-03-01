@@ -1,7 +1,4 @@
-﻿using eShop.Todo;
-using System.ComponentModel.DataAnnotations;
-
-namespace eShop.Web.Pages.Todo
+﻿namespace eShop.Web.Pages.Todo
 {
     public class AddTodoListViewModel
     {

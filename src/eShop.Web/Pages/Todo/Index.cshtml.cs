@@ -1,6 +1,3 @@
-using eShop.Todo;
-using System.Collections.Generic;
-
 namespace eShop.Web.Pages.Todo;
 
 public class IndexModel : eShopPageModel
