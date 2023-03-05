@@ -1,22 +1,13 @@
-﻿using eShop.Entities.Blogs;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+﻿using System.Reflection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
-using Volo.Abp.Data;
-using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
-using eShop.Entities.Todo;
-using eShop.Entities.Products;
-using eShop.Entities.Categories;
 
 namespace eShop.EntityFrameworkCore;
 
@@ -40,6 +31,9 @@ public class eShopDbContext : AbpDbContext<eShopDbContext>, IIdentityDbContext, 
 
     // Add Blog
     public DbSet<Blog> Blogs { get; set; }
+
+    // Add UserAddress
+    public DbSet<UserAddress> UserAddresses { get; set; }
 
 
     #region Entities from the modules
@@ -92,8 +86,8 @@ public class eShopDbContext : AbpDbContext<eShopDbContext>, IIdentityDbContext, 
 
         // Add for Configurations
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        
-        
+
+
         // Add TodoItem
         //builder.Entity<TodoItem>(b => { b.ToTable("TodoItems"); });
 

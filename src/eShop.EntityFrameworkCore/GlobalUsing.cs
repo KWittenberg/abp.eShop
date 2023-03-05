@@ -38,6 +38,7 @@ global using eShop.Entities.Blogs;
 global using eShop.Entities.Categories;
 global using eShop.Entities.Products;
 global using eShop.Entities.Todo;
+global using eShop.Entities.User;
 global using eShop.Enums;
 global using eShop.ValueObjects;
 

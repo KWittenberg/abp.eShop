@@ -2,33 +2,21 @@
 
 public class Address : ValueObject
 {
-    public AddressType Type { get; private set; }
-
-    public string Country { get; private set; }
-
-    public string CountryCode { get; private set; }
-
-    public string PostalCode { get; private set; }
-
-    public string City { get; private set; }
-
-    public string Street { get; private set; }
-
-    public string Number { get; private set; }
-
+    public AddressType AddressType { get; init; }
+    public string Country { get; init; }
+    public string CountryCode { get; init; }
+    public string PostalCode { get; init; }
+    public string City { get; init; }
+    public string Street { get; init; }
+    public string Number { get; init; }
 
     private Address()
     {
     }
 
-    public Address(
-        string country,
-        string countryCode,
-        string postalCode,
-        string city,
-        string street,
-        string number)
+    public Address(AddressType addressType, string country, string countryCode, string postalCode, string city, string street, string number)
     {
+        AddressType = addressType;
         Country = country;
         CountryCode = countryCode;
         PostalCode = postalCode;
@@ -39,7 +27,7 @@ public class Address : ValueObject
 
     protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return Type;
+        yield return AddressType;
         yield return Country;
         yield return CountryCode;
         yield return PostalCode;

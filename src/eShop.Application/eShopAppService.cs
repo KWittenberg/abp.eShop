@@ -1,7 +1,4 @@
-﻿using eShop.Localization;
-using Volo.Abp.Application.Services;
-
-namespace eShop;
+﻿namespace eShop;
 
 /* Inherit your application services from this class. */
 public abstract class eShopAppService : ApplicationService

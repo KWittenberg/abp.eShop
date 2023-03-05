@@ -43,7 +43,7 @@ global using eShop.AppServices.Todo.Dtos;
 global using eShop.Common.Dtos;
 global using eShop.Entities.Blogs;
 global using eShop.Interfaces;
-
+global using eShop.Localization;
 
 global using eShop.Entities.Categories;
 global using eShop.Entities.Products;

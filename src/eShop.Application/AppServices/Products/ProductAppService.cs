@@ -1,7 +1,4 @@
-﻿using eShop.Entities.Categories;
-using eShop.Entities.Products;
-
-namespace eShop.AppServices.Products;
+﻿namespace eShop.AppServices.Products;
 
 public class ProductAppService : eShopAppService, IProductAppService
 {

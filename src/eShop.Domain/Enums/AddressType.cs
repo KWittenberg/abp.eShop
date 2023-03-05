@@ -5,5 +5,6 @@ public enum AddressType : byte
 {
     Home,
     Office,
-    Delivery
+    Delivery,
+    Other
 }
