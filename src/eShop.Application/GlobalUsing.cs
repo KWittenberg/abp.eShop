@@ -40,6 +40,7 @@ global using eShop.AppServices.Products;
 global using eShop.AppServices.Products.Dtos;
 global using eShop.AppServices.Todo;
 global using eShop.AppServices.Todo.Dtos;
+global using eShop.AppServices.Users.Dtos;
 global using eShop.Common.Dtos;
 global using eShop.Entities.Blogs;
 global using eShop.Interfaces;

@@ -13,8 +13,8 @@ using eShop.EntityFrameworkCore;
 namespace eShop.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20230216212240_Blog")]
-    partial class Blog
+    [Migration("20230307002515_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1639,64 +1639,7 @@ namespace eShop.Migrations
                     b.ToTable("AbpTenantConnectionStrings", (string)null);
                 });
 
-            modelBuilder.Entity("eShop.Categories.Category", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)")
-                        .HasColumnName("ConcurrencyStamp");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("CreationTime");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("CreatorId");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("DeleterId");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("DeletionTime");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ExtraProperties");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("LastModificationTime");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name");
-
-                    b.ToTable("Categories", (string)null);
-                });
-
-            modelBuilder.Entity("eShop.Blog.Blog", b =>
+            modelBuilder.Entity("eShop.Entities.Blogs.Blog", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -1768,7 +1711,64 @@ namespace eShop.Migrations
                     b.ToTable("Blogs", (string)null);
                 });
 
-            modelBuilder.Entity("eShop.Products.Product", b =>
+            modelBuilder.Entity("eShop.Entities.Categories.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name");
+
+                    b.ToTable("Categories", (string)null);
+                });
+
+            modelBuilder.Entity("eShop.Entities.Products.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -1846,7 +1846,7 @@ namespace eShop.Migrations
                     b.ToTable("Products", (string)null);
                 });
 
-            modelBuilder.Entity("eShop.Products.ProductImage", b =>
+            modelBuilder.Entity("eShop.Entities.Products.ProductImage", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -1912,7 +1912,7 @@ namespace eShop.Migrations
                     b.ToTable("ProductImages", (string)null);
                 });
 
-            modelBuilder.Entity("eShop.Todo.TodoItem", b =>
+            modelBuilder.Entity("eShop.Entities.Todo.TodoItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -1964,7 +1964,7 @@ namespace eShop.Migrations
                     b.ToTable("TodoItems", (string)null);
                 });
 
-            modelBuilder.Entity("eShop.Todo.TodoList", b =>
+            modelBuilder.Entity("eShop.Entities.Todo.TodoList", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -2011,6 +2011,37 @@ namespace eShop.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("TodoLists", (string)null);
+                });
+
+            modelBuilder.Entity("eShop.Entities.User.UserAddress", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserAddresses", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
@@ -2155,7 +2186,7 @@ namespace eShop.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("eShop.Blog.Blog", b =>
+            modelBuilder.Entity("eShop.Entities.Blogs.Blog", b =>
                 {
                     b.HasOne("Volo.Abp.Identity.IdentityUser", "User")
                         .WithMany()
@@ -2166,9 +2197,9 @@ namespace eShop.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("eShop.Products.Product", b =>
+            modelBuilder.Entity("eShop.Entities.Products.Product", b =>
                 {
-                    b.HasOne("eShop.Categories.Category", "Category")
+                    b.HasOne("eShop.Entities.Categories.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -2177,9 +2208,9 @@ namespace eShop.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("eShop.Products.ProductImage", b =>
+            modelBuilder.Entity("eShop.Entities.Products.ProductImage", b =>
                 {
-                    b.HasOne("eShop.Products.Product", "Product")
+                    b.HasOne("eShop.Entities.Products.Product", "Product")
                         .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -2188,9 +2219,9 @@ namespace eShop.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("eShop.Todo.TodoItem", b =>
+            modelBuilder.Entity("eShop.Entities.Todo.TodoItem", b =>
                 {
-                    b.HasOne("eShop.Todo.TodoList", "TodoList")
+                    b.HasOne("eShop.Entities.Todo.TodoList", "TodoList")
                         .WithMany("TodoItems")
                         .HasForeignKey("TodoListId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -2199,11 +2230,70 @@ namespace eShop.Migrations
                     b.Navigation("TodoList");
                 });
 
-            modelBuilder.Entity("eShop.Todo.TodoList", b =>
+            modelBuilder.Entity("eShop.Entities.Todo.TodoList", b =>
                 {
                     b.HasOne("Volo.Abp.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eShop.Entities.User.UserAddress", b =>
+                {
+                    b.HasOne("Volo.Abp.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("eShop.ValueObjects.Address", "Address", b1 =>
+                        {
+                            b1.Property<Guid>("UserAddressId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("AddressType")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("City")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
+
+                            b1.Property<string>("Country")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("nvarchar(50)");
+
+                            b1.Property<string>("CountryCode")
+                                .IsRequired()
+                                .HasMaxLength(10)
+                                .HasColumnType("nvarchar(10)");
+
+                            b1.Property<string>("Number")
+                                .IsRequired()
+                                .HasMaxLength(10)
+                                .HasColumnType("nvarchar(10)");
+
+                            b1.Property<string>("PostalCode")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("nvarchar(20)");
+
+                            b1.Property<string>("Street")
+                                .IsRequired()
+                                .HasMaxLength(100)
+                                .HasColumnType("nvarchar(100)");
+
+                            b1.HasKey("UserAddressId");
+
+                            b1.ToTable("UserAddresses");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserAddressId");
+                        });
+
+                    b.Navigation("Address");
 
                     b.Navigation("User");
                 });
@@ -2248,12 +2338,12 @@ namespace eShop.Migrations
                     b.Navigation("ConnectionStrings");
                 });
 
-            modelBuilder.Entity("eShop.Products.Product", b =>
+            modelBuilder.Entity("eShop.Entities.Products.Product", b =>
                 {
                     b.Navigation("ProductImages");
                 });
 
-            modelBuilder.Entity("eShop.Todo.TodoList", b =>
+            modelBuilder.Entity("eShop.Entities.Todo.TodoList", b =>
                 {
                     b.Navigation("TodoItems");
                 });

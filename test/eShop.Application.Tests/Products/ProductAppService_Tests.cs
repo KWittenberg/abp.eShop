@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using eShop.AppServices.Products;
 using Shouldly;
 using Volo.Abp.Application.Dtos;
 using Xunit;

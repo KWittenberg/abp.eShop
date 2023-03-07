@@ -1,9 +1,9 @@
 ﻿namespace eShop.Entities.User;
 
-public class UserAddress : AuditedAggregateRoot<Guid>
+public class UserAddress : AuditedEntity<Guid>
 {
     // Add Address
-    public ICollection<Address> Address { get; set; }
+    public Address Address { get; set; }
 
     // Add User
     [ForeignKey("UserId")]

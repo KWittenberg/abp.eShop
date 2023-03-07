@@ -5,8 +5,9 @@ public class UserAddressConfiguration : IEntityTypeConfiguration<UserAddress>
     public void Configure(EntityTypeBuilder<UserAddress> builder)
     {
         builder.ToTable("UserAddresses");
-        builder.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId).IsRequired(true);
-        builder.OwnsMany(x => x.Address, o =>
+        builder.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId).IsRequired();
+        builder.HasQueryFilter(x => !x.User.IsDeleted);
+        builder.OwnsOne(x => x.Address, o =>
         {
             o.Property(p => p.AddressType).HasConversion<int>();
             o.Property(p => p.Country).IsRequired().HasMaxLength(AddressConsts.CountryMaxNameLength);

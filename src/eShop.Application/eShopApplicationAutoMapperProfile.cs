@@ -1,7 +1,4 @@
-﻿using eShop.Entities.Categories;
-using eShop.Entities.Products;
-
-namespace eShop;
+﻿namespace eShop;
 
 public class eShopApplicationAutoMapperProfile : Profile
 {
@@ -46,6 +43,8 @@ public class eShopApplicationAutoMapperProfile : Profile
         // User
         CreateMap<IdentityUser, UserDto>();
 
-
+        // UserAddress
+        CreateMap<UserAddress, UserAddressDto>();
+        CreateMap<AddUserAddressDto, UserAddress>();
     }
 }
