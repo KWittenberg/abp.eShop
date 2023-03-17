@@ -10,12 +10,12 @@ public class UserAddressConfiguration : IEntityTypeConfiguration<UserAddress>
         builder.OwnsOne(x => x.Address, o =>
         {
             o.Property(p => p.AddressType).HasConversion<int>();
-            o.Property(p => p.Country).IsRequired().HasMaxLength(AddressConsts.CountryMaxNameLength);
-            o.Property(p => p.CountryCode).IsRequired().HasMaxLength(AddressConsts.CountryCodeMaxNameLength);
-            o.Property(p => p.PostalCode).IsRequired().HasMaxLength(AddressConsts.PostalCodeMaxNameLength);
-            o.Property(p => p.City).IsRequired().HasMaxLength(AddressConsts.CityMaxNameLength);
-            o.Property(p => p.Street).IsRequired().HasMaxLength(AddressConsts.StreetMaxNameLength);
-            o.Property(p => p.Number).IsRequired().HasMaxLength(AddressConsts.NumberMaxNameLength);
+            o.Property(p => p.Country).IsRequired().HasMaxLength(AddressConsts.MaxCountryLength);
+            o.Property(p => p.CountryCode).IsRequired().HasMaxLength(AddressConsts.MaxCountryCodeLength);
+            o.Property(p => p.PostalCode).IsRequired().HasMaxLength(AddressConsts.MaxPostalCodeLength);
+            o.Property(p => p.City).IsRequired().HasMaxLength(AddressConsts.MaxCityLength);
+            o.Property(p => p.Street).IsRequired().HasMaxLength(AddressConsts.MaxStreetLength);
+            o.Property(p => p.Number).IsRequired().HasMaxLength(AddressConsts.MaxNumberLength);
         });
     }
 }

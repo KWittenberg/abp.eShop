@@ -1,29 +1,30 @@
 ﻿@page
-@using Volo.Abp.Users;
-@using eShop.Web.Pages.Products
-@using Microsoft.Extensions.Localization
-@using eShop.Localization
 @inject ICurrentUser CurrentUser
+@using eShop.Localization
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.Users
 @model eShop.Web.Pages.Blog.IndexModel
 @inject IStringLocalizer<eShopResource> L
 
 @{
     ViewData["Title"] = "Blog";
     //Layout = "_LayoutADMIN";
-    int counter = 1;
+    var counter = 1;
 }
 
-@section scripts
-    {
-    <abp-script src="/Pages/Products/Index.cshtml.js" />
-}
+@*@section scripts
+{
+    <abp-script src="/Pages/Products/Index.cshtml.js"/>
+}*@
 
 
 <!-- Products -->
 <div class="d-flex align-items-center mb-3">
     <div>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="~/">Home</a></li>
+            <li class="breadcrumb-item">
+                <a href="~/">Home</a>
+            </li>
             <li class="breadcrumb-item active">Blog</li>
         </ol>
         <h1 class="page-header mb-0">Blog</h1>
@@ -50,43 +51,57 @@
             <div class="table-responsive">
                 <table class="table table-hover mb-0 align-middle">
                     <thead>
-                        <tr>
-                            <th style="width: 2%">#</th>
-                            <th style="width: 7%">Image</th>
-                            <th style="width: 25%">Title</th>
-                            <th style="width: 10%" class="text-center">Author</th>
-                            <th style="width: 5%" class="text-center">Publish</th>
-                            <th style="width: 5%" class="text-center">Create</th>
-                            <th style="width: 11%"><a id="NewProductButton" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> Add New</a></th>
-                        </tr>
+                    <tr>
+                        <th style="width: 2%">#</th>
+                        <th style="width: 7%">Image</th>
+                        <th style="width: 25%">Title</th>
+                        <th style="width: 10%" class="text-center">Author</th>
+                        <th style="width: 5%" class="text-center">Publish</th>
+                        <th style="width: 5%" class="text-center">Create</th>
+                        <th style="width: 11%">
+                            <a id="NewProductButton" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> Add New</a>
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Blogs)
-                        {
+                    @foreach (var item in Model.Blogs)
+                    {
                             @*var userName = CurrentUser.FindImpersonatorUserName(x => x.item.Id == item.UserId);*@
-                            <tr>
-                                <td>@counter</td>
-                                <td><a href="@item.ImageUrl" class="popupImg"><img src="@item.ImageUrl" width="100" /></a></td>
-                                <td><b>@item.Title</b></td>
-                                <td class="text-center">@item.Name @item.Surname</td>
-                                <td class="text-center">@item.Publish</td>
-                                <td class="text-center">@item.CreationTime</td>
-                                <td>
-                                    <div class="btn-group btn-group-sm">
-                                        <a asp-page="/Products/ProductImage" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
+                        <tr>
+                            <td>@counter</td>
+                            <td>
+                                <a href="@item.ImageUrl" class="popupImg">
+                                    <img src="@item.ImageUrl" width="100"/>
+                                </a>
+                            </td>
+                            <td>
+                                <b>@item.Title</b>
+                            </td>
+                            <td class="text-center">@item.Name @item.Surname</td>
+                            <td class="text-center">@item.Publish</td>
+                            <td class="text-center">@item.CreationTime</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-page="/Products/ProductImage" asp-route-id="@item.Id" class="btn btn-secondary btn-sm">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
 
-                                        @*<a asp-page="/Products/ProductImages" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
+                                    @*<a asp-page="/Products/ProductImages" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
                                     <a asp-page="/Product/ProductImages" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>*@
 
-                                        @*<a asp-controller="Shop" asp-action="ItemView" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
+                                    @*<a asp-controller="Shop" asp-action="ItemView" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
                                     <a asp-controller="ProductImages" asp-action="Create" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="fa-solid fa-image"></i></a>*@
-                                        <a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                        <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            counter++;
-                        }
+                                    <a asp-controller="" asp-action="" asp-route-id="@item.Id" class="btn btn-secondary btn-sm">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        counter++;
+                    }
                     </tbody>
                 </table>
             </div>
@@ -94,4 +109,6 @@
     </div>
 </div>
 
-<form id="deleteForm" asp-action="Delete"><input type="hidden" id="leaveTypeId" name="Id" /></form>
+<form id="deleteForm" asp-action="Delete">
+    <input type="hidden" id="leaveTypeId" name="Id"/>
+</form>

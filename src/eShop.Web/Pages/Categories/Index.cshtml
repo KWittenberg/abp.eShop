@@ -22,7 +22,7 @@
         <h1 class="page-header mb-0">Categories</h1>
     </div>
     <div class="ms-auto">
-        <a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</a>
+        <a asp-controller="" asp-action="" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add New</a>
     </div>
 </div>
 <div class="mt-5 container col-xl-12">
@@ -41,7 +41,7 @@
                             <th>#</th>
                             <th>Id</th>
                             <th style="width: 50%">Category</th>
-                            <th style="width: 11%"><a asp-controller="ProductCategory" asp-action="AddOrEdit" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> &nbsp; Add New</a></th>
+                            <th style="width: 11%"><a asp-controller="" asp-action="" class="btn btn-block btn-secondary btn-sm"><i class="bi bi-plus-circle"></i> &nbsp; Add New</a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,8 +53,8 @@
                                 <td>@item.Name</td>
                                 <td nowrap>
                                     <div class="btn-group btn-group-sm">
-                                        <a asp-controller="ProductCategory" asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                        <!--<form asp-controller="ProductCategory" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="bi bi-trash"></i></button></form>-->
+                                        <a asp-controller="" asp-action="" asp-route-id="@item.Id" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                        @*<form asp-controller="ProductCategory" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="bi bi-trash"></i></button></form>*@
                                         <button class="deleteBtn btn btn-secondary btn-sm" type="button" data-id="@item.Id"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </td>

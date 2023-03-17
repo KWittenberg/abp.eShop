@@ -17,7 +17,7 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
     <ProjectReference Include="..\eShop.Application.Tests\eShop.Application.Tests.csproj" />
     <ProjectReference Include="..\..\src\eShop.Web\eShop.Web.csproj" />
-    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="7.0.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
